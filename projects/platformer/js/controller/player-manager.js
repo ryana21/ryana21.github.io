@@ -9,12 +9,16 @@
             cursors, 
             asset = player.asset;
         
-        cursors = game.cursors = game.input.keyboard.createCursorKeys();
+            cursors = game.cursors = game.input.keyboard.createCursorKeys();
         game.input.keyboard.addCallbacks(this, onDown, onUp, onPress);
-        
+        game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
+        var fireKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        fireKey.onDown.add(fire, player.asset);
+
         function onDown() {
-            
+
         }
+        
         
         function onUp() {
             player.stop();
@@ -31,11 +35,13 @@
         var fireKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         fireKey.onDown.add(fire, player.asset);
         
+      */
+
         function fire() {
             console.log('playerManager says to fire!');
             player.fire();
         }
-        */
+  
         
         function update() {
             // todo : fix states to include velocity or keyup/cursorLeft //
@@ -54,6 +60,7 @@
             if (cursors.up.isDown && asset.body.touching.down) {
                 player.flyingJump();
             }
+            
         }
         
         return {
