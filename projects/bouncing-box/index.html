@@ -10,19 +10,19 @@
 			height: 140px;
 			background: url(https://pngimg.com/uploads/cookie/cookie_PNG13680.png);
 			background-size: 100%;
-			font-size: 300%;
+			font-size: 700%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
 			left: 700px;  /* <--- Change me! */
-			color:crimson
+			color:rgb(20, 23, 220)
 		}
 		.board{
 			height: 100vh;
 			background: url(https://t4.ftcdn.net/jpg/02/39/24/17/360_F_239241703_7ZzH9DFZ2bmYerRy3q4wiwb24XSqBAB8.jpg);
 		}
-	</style>
+			</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
@@ -49,10 +49,11 @@
 
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
-			
+			var interval = setInterval(update, 50);
+
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
+			board.on('click', handleBoardClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX, newPositionY) {
@@ -64,7 +65,7 @@
 			function changeBoxText(newText) {
 				box.text(newText);
 			}
-
+			
 			//////////////////////////////////////////////////////////////////
 			/////////////////// YOUR CODE BELOW HERE /////////////////////////
 			//////////////////////////////////////////////////////////////////
@@ -75,6 +76,7 @@
 			var speed = 10;
 			var positionY = 0;
 			var speedY = 5;
+			var lives = 10;
 
 			
 			/* 
@@ -124,8 +126,17 @@
 				speedY = speedY - 3
 			}
 			changeBoxText(points);
+			};
+
+
+			function handleBoardClick() {
+			lives = lives - 1
+			if (lives <= 9) {
+				
+			}
 
 			};
+    		
 		})();
 	</script>
 </body>
