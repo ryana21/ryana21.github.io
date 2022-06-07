@@ -20,7 +20,7 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-
+  applyFilter(reddify);
   
 
   // do not change the below line of code
@@ -32,16 +32,36 @@ function applyAndRender() {
 /////////////////////////////////////////////////////////
 
 // TODO 1, 2 & 4: Create the applyFilter function here
+function applyFilter(filterFunction){
+  for (var r = 0; r < image.length; r++) {
+    for (var c = 0; c < image[r].length; c++){
+      var rgbString = image[r][c];
+        
+      var rgbNumbers = rgbStringToArray(rgbString);
+      
+      filterFunction(rgbNumbers);
 
+
+      rgbString = rgbArrayToString(rgbNumbers);
+      
+      image[r][c] = rgbString;
+
+    }
+  } 
+}
 
 // TODO 7: Create the applyFilterNoBackground function
 
 
 // TODO 5: Create the keepInBounds function
-
+function keepInBounds(){
+  
+}
 
 // TODO 3: Create reddify function
-
+function reddify(rose){
+    rose[RED] = 200;
+}
 
 // TODO 6: Create more filter functions
 
