@@ -13,6 +13,12 @@ body > div {
   top: 350px;
 }
 
+#boogie-box {
+  position: relative;
+  top: 375px;
+  left: 60px;
+}
+
 button {
   width: 120px;
   padding: 5px;
@@ -25,4 +31,8 @@ button {
 
 #reset {
   background: red;
+}
+
+#dance {
+  background: purple;
 }

@@ -4,6 +4,7 @@ $(document).ready(function () {
   render($("#display"), image);
   $("#apply").on("click", applyAndRender);
   $("#reset").on("click", resetAndRender);
+  $('#boogie-box').on("click", boogieAndRender)
 });
 
 /////////////////////////////////////////////////////////
@@ -16,6 +17,13 @@ function resetAndRender() {
   render($("#display"), image);
 }
 
+
+function boogieAndRender(){
+
+  boogie();
+ 
+  render($("#display"), image);
+}
 // this function applies the filters to the image and is where you should call
 // all of your apply functions
 function applyAndRender() {
@@ -46,25 +54,6 @@ function applyFilter(filterFunction){
       rgbString = rgbArrayToString(rgbNumbers);
       
       image[r][c] = rgbString;
-    }
-  } 
-}
-//smudgeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-
-function applyFilterSmudge(filterFunction, smudge){
-  for (var r = 0; r < image.length; r+2) {
-    for (var c = 0; c < image[r].length; c++){
-      var rgbString = image[r][c];
-        
-      var rgbNumbers = rgbStringToArray(rgbString);
-      
-      filterFunction(rgbNumbers - 50);
-
-
-      rgbString = rgbArrayToString(rgbNumbers);
-      
-      image[r][c] = rgbString;
-
     }
   } 
 }
@@ -130,3 +119,35 @@ function increaseGreenByBlue(swas){
 }
 
 // CHALLENGE code goes below here
+function boogie(){
+  var newImage = []
+  
+  for (var r = image.length-1; r >= 0; r -= 1) {
+    var row = []
+   
+    for (var c = image[r].length-1; c >= 0; c -= 1) {
+  
+    row.push(image[r][c])
+         
+
+       
+    }
+    newImage.push(row)
+  }
+  
+
+  image = newImage;
+  
+
+}  
+
+  // for (var r = image.length-1; r <= 0; r--) {
+  //   for (var c = image.length-1; c < image[r].length; c--){
+  //     switch (image[r][c]){
+  //       [r][c] = new newImage();
+  //     }
+ 
+ 
+  //   }   
+  // }
+  // return newImage;
