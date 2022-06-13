@@ -31,10 +31,10 @@ async function quickSort(array, left, right){
         if (array.length > 1){
             var index = await partition((array, left, right));
             while (left < index - 1){
-            await partition(array, left, index - 1);
+                await quickSort(array, left, index - 1);
             }
             while (right > index){
-                await quickSort(array, left, right);
+                await quickSort(array, index, right);
             }
         }
         else{
