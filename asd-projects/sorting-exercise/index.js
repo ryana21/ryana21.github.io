@@ -29,16 +29,13 @@ async function bubbleSort(array){
 // TODO 3: Implement quickSort
 async function quickSort(array, left, right){
         if (array.length > 1){
-            var index = await partition((array, left, right));
-            while (left < index - 1){
+            var index = await partition(array, left, right);
+            if (left < index - 1){
                 await quickSort(array, left, index - 1);
             }
-            while (right > index){
+            if (right > index){
                 await quickSort(array, index, right);
             }
-        }
-        else{
-            return(array);
         }
 }
 
@@ -49,7 +46,7 @@ async function partition(array, left, right){
         while (array[left].value < pivot){
             left++;
         }
-        while (array[right].value < pivot){
+        while (array[right].value > pivot){
             right--;
         }
         if(left < right){
