@@ -1,0 +1,52 @@
+
+User Story / Gameplay
+Describe the gameplay
+-The user plays as a 2D snake that moves around a box. Bent on revenge, the snake devours apples that randomly appear on the ground, growing more powerful and longer with each bite. 
+However, the snake is doomed to an enternity of this cat and mouse experience where his only ways to stop the gae is by eating itself or colliding with the walls of his prison.
+
+What are the conditions when the game begins?
+-The conditions are that the snake begins as a single head block and there is an apple randomly spawned in the grid of boxes.
+
+Does the game have an end? If so, what are the conditions for when it ends?
+-The game will end when the snake runs into one of its own pieces(the head coordinates are the same as the piece's coordinates) or if the snake head runs into one of the boundaries of the box(the snake head coords are the same as the wall's coords)
+
+What ifs will there be?
+The ifs will be
+-if snake hits wall, end game
+-if snake eats apple increase length
+-if the snake hits it's own piece, end game
+-if snake eats apple, increase counter by one
+
+Visual Game Components:
+What are the visual game components? 
+The components are
+-snake head
+-snake body pieces
+-apple
+-board
+
+Which will be static? (the board)
+-the board will be static
+
+Which will be animated? (the box)
+-the snake and it's pieces
+-the apple
+
+What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
+-the snake's length, x and y position, x and y speed, direction of the snake and whether the snake is on the apple or if it hit a wall
+-the apple's position, and whether it has been eaten or not
+
+Events / Logic
+What events will occur in this game? (timer events, keyboard events, clicking events?)
+-W A S D keyboard events will occur and possibly a menu using keyboard events to select modes?? maybe
+
+How do those events affect the data of the program?
+-WASD keyboard events will affect the snakes direction
+-The keyboard events will affect the menu if there is one 
+
+For each "event", write out the high-level logic of what will happen. It is better (and tricky) to be as specific as you can while remaining high-level!
+-W keyboard event will make the snake move upwards (increase the positionY)
+-A keyboard event will make the snake move left (decrease the positionX)
+-S keyboard event will make the snake move downwards (decrease the posiytionY)
+-D keyboard event will make the snake move left (increase the positionX)
+-enter keyboard event will possibly start the game (begin the runProgram function)
