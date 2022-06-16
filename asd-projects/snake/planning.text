@@ -33,7 +33,7 @@ Which will be animated? (the box)
 -the apple
 
 What data will you need to manage each game component? For example, in Bouncing Box, the data values were positionX, speedX, and points.
--the snake's length, x and y position, x and y speed, direction of the snake and whether the snake is on the apple or if it hit a wall
+-the snake's head  and body parts x and y position (in a array), x and y speed, direction of the snake and whether the snake is on the apple or if it hit a wall
 -the apple's position, and whether it has been eaten or not
 
 Events / Logic
