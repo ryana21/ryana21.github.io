@@ -64,23 +64,29 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    for (i = 0; i <= snakeArray.length ; i++){
+    
+    for (var i = snakeArray.length - 1; i > 0 ; i--){
       redrawGameItem(snakeArray[i])
-      repositionGameItem(snakeArray[i])
-      if (head.positionX === apple.positionX && head.positionY === apple.positionY) {
-        spawnApple(apple); 
-        addPiece();
-        scoreKeep(); 
-      }
+      repositionBodyItem(snakeArray[i], i)
+      
+    }
+    redrawGameItem(snakeArray[0])
+    repositionGameItem(snakeArray[0])
+    
+    if (head.positionX === apple.positionX && head.positionY === apple.positionY) {
+      spawnApple(apple); 
+      addPiece();
+      scoreKeep(); 
     }
   }
+ 
   
   /* 
   Called in response to events.
   */
   function handleKeyDownE(event) {
     if (event.which === KEY.enter){
-      addPiece();
+      addPiece;
     }
   }
   
@@ -136,6 +142,11 @@ function runProgram(){
   function repositionGameItem(piece) {
     piece.positionX += piece.speedX;
     piece.positionY += piece.speedY;
+  }
+
+  function repositionBodyItem(piece, i) {
+    piece.positionX = snakeArray[i - 1].positionX;
+    piece.positionY = snakeArray[i - 1].positionY;
   }
   
   function redrawGameItem(piece) {
