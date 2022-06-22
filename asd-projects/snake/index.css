@@ -6,7 +6,7 @@
   height: 1160px;
   border: 10px solid rgb(17, 206, 11);
   background-color: black;
-  position: relative;
+  position: absolute;
 }
 
 #snake {
@@ -17,7 +17,34 @@
   border-radius: 40px;
   top: 4000px;
   left: 4000px;  
+  transform: rotate(0deg);
+
 }
+
+#tongue {
+  background-color: red;
+  width: 30px;
+  height:15px;
+  position: absolute;
+  /* top: inherit;
+  left: inherit; */
+}
+#eye1 {
+  background-color: white;
+  width: 15px;
+  height:15px;
+  border-radius: 15px;
+  position: absolute;
+  
+}
+#eye2 {
+  background-color: white;
+  width: 15px;
+  height:15px;
+  border-radius: 15px;
+  position: absolute;
+}
+
 .snakePart {
   background-color: green;
   width: 40px;
@@ -30,6 +57,9 @@
   width: 40px;
   height: 40px;
   position: absolute;
+  left: 400px;
+  top: 520px;
+
 }
 #score {
   border: 10px solid rgb(17, 206, 11);
@@ -39,7 +69,35 @@
   position: absolute;
   left: 2400px;
   top: 8px;
+  font-family:fantasy;
   font-size: 700%;
 	text-align: center;
   display: block;
   }
+
+#menu {
+  border: 10px solid goldenrod;
+  background-color: blueviolet;
+  height: 600px;
+  width: 1200px;
+  position: absolute;
+  left: 800px;
+  top: 300px;
+  font-size: 700%;
+	text-align: center;
+  display: none;
+}
+
+#death {
+  border: 10px solid goldenrod;
+  background-color: rgb(226, 80, 43);
+  height: 600px;
+  width: 1200px;
+  position: absolute;
+  left: 800px;
+  top: 300px;
+  font-style:unset;
+  font-size: 1000%;
+	text-align: center;
+  display: none;
+}
