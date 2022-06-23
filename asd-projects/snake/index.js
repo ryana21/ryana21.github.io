@@ -98,6 +98,8 @@ function startGame() {
       id: "#apple",
       positionX: randomGrid(2360),
       positionY: randomGrid(1120),
+      width: 40,
+      height: 40,
     };
 
     
@@ -343,7 +345,7 @@ function startGame() {
       var pupAngle1 = calculatePupilAngle(eye1);
       var pupAngle2 = calculatePupilAngle(eye2);
 
-      $(scoreBox.id).text(pupAngle1 + " " + pupAngle2);
+      $(scoreBox).text(pupAngle1 + " " + pupAngle2);
     }
 
     function calculatePupilAngle(eye){
