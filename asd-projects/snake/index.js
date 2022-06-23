@@ -2,15 +2,13 @@
 
 $(document).ready(startGame); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
 
-
 function startGame() {
-  var menuBox = jQuery('#menu');
+  var menuBox = jQuery("#menu");
 
   menuBox.text("THE GREAT REVENGE      ~click to begin~");
 
   $("#menu").show();
-  $("#menu").on('click', hide);
-
+  $("#menu").on("click", hide);
 
   function hide(event) {
     if ($("#menu").is(":visible")) {
@@ -38,8 +36,6 @@ function startGame() {
     var GRID_SIZE = 40;
     // Game Item Objects
 
-
-
     var head = {
       id: "#snake",
       positionX: randomGrid(2360),
@@ -61,16 +57,16 @@ function startGame() {
       positionX: head.positionX + 20,
       positionY: head.positionY + 10,
       speedX: 0,
-      speedY: 0
-    }
+      speedY: 0,
+    };
 
     var pupil2 = {
       id: "#pupil2",
       positionX: head.positionX + 20,
       positionY: head.positionY + 10,
       speedX: 0,
-      speedY: 0
-    }
+      speedY: 0,
+    };
 
     var eye1 = {
       id: "#eye1",
@@ -80,7 +76,6 @@ function startGame() {
       speedY: 0,
       width: 15,
       height: 15,
-      
     };
 
     var eye2 = {
@@ -91,7 +86,6 @@ function startGame() {
       speedY: 0,
       width: 15,
       height: 15,
-      
     };
 
     var apple = {
@@ -102,25 +96,19 @@ function startGame() {
       height: 40,
     };
 
-    
-
-    var snakeArray = [
-      head,
-    ]
-
+    var snakeArray = [head];
 
     // one-time setup
-    var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-    $(document).on('keydown', handleKeyDownW);                           // change 'eventType' to the type of event you want to handle
-    $(document).on('keydown', handleKeyDownA);
-    $(document).on('keydown', handleKeyDownS);
-    $(document).on('keydown', handleKeyDownD);
-    $(document).on('keydown', handleKeyDownE);
+    var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
+    $(document).on("keydown", handleKeyDownW); // change 'eventType' to the type of event you want to handle
+    $(document).on("keydown", handleKeyDownA);
+    $(document).on("keydown", handleKeyDownS);
+    $(document).on("keydown", handleKeyDownD);
+    $(document).on("keydown", handleKeyDownE);
 
     spawnApple(apple);
 
-
-    // $(document).on('keyup', handleKeyUp); 
+    // $(document).on('keyup', handleKeyUp);
     ////////////////////////////////////////////////////////////////////////////////
     ///////////////////////// CORE LOGIC ///////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
@@ -130,21 +118,22 @@ function startGame() {
     by calling this function and executing the code inside.
     */
     function newFrame() {
-
-
-      if (head.positionX === apple.positionX && head.positionY === apple.positionY) {
+      if (
+        head.positionX === apple.positionX &&
+        head.positionY === apple.positionY
+      ) {
         spawnApple(apple);
         addPiece();
         scoreKeep();
       }
 
       for (var i = snakeArray.length - 1; i > 0; i--) {
-        repositionBodyItem(snakeArray[i], i)
-        redrawGameItem(snakeArray[i])
+        repositionBodyItem(snakeArray[i], i);
+        redrawGameItem(snakeArray[i]);
       }
 
-      repositionGameItem(snakeArray[0])
-      redrawGameItem(snakeArray[0])
+      repositionGameItem(snakeArray[0]);
+      redrawGameItem(snakeArray[0]);
 
       winGame();
 
@@ -153,9 +142,7 @@ function startGame() {
       outOfBounds();
 
       eyes();
-
     }
-
 
     /* 
     Called in response to events.
@@ -164,7 +151,6 @@ function startGame() {
       if (event.which === KEY.enter) {
         addPiece();
         // $('.snakePart').css("background-color", `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`);
-
       }
     }
 
@@ -172,8 +158,9 @@ function startGame() {
       if (event.which === KEY.W && head.speedY != 40) {
         head.speedY = -40;
         head.speedX = 0;
-        
+
         $(head.id).css("transform", "rotate(0deg)");
+        head.angle = 0;
       }
     }
 
@@ -182,7 +169,7 @@ function startGame() {
         head.speedX = -40;
         head.speedY = 0;
         $(head.id).css("transform", "rotate(270deg)");
-
+        head.angle = 270;
       }
     }
 
@@ -190,8 +177,8 @@ function startGame() {
       if (event.which === KEY.S && head.speedY != -40) {
         head.speedY = +40;
         head.speedX = 0;
-        $(head.id).css("transform", "rotate(180deg)")
-
+        $(head.id).css("transform", "rotate(180deg)");
+        head.angle = 180;
       }
     }
 
@@ -199,7 +186,8 @@ function startGame() {
       if (event.which === KEY.D && head.speedX != -40) {
         head.speedX = +40;
         head.speedY = 0;
-        $(head.id).css("transform", "rotate(90deg)")
+        $(head.id).css("transform", "rotate(90deg)");
+        head.angle = 90;
       }
     }
 
@@ -244,7 +232,10 @@ function startGame() {
       apple.positionY = randomGrid(1120);
 
       for (var i = snakeArray.length - 1; i > 0; i--) {
-        if (snakeArray.positionX === apple.positionX && snakeArray.positionY === apple.positionY) {
+        if (
+          snakeArray.positionX === apple.positionX &&
+          snakeArray.positionY === apple.positionY
+        ) {
           spawnApple();
           break;
         }
@@ -259,25 +250,30 @@ function startGame() {
       var newPiece = {};
 
       newPiece.id = id;
-      newPiece.backgroundColor = parseFloat($(id).css('background-color', `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`));
-      newPiece.borderRadius = parseFloat($(id).css('border-radius'));
-      newPiece.positionX = parseFloat($(id).css('left'))
-      newPiece.positionY = parseFloat($(id).css('top'));
-      newPiece.width = parseFloat($(id).css('width'));
-      newPiece.height = parseFloat($(id).css('height'));
+      newPiece.backgroundColor = parseFloat(
+        $(id).css(
+          "background-color",
+          `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`
+        )
+      );
+      newPiece.borderRadius = parseFloat($(id).css("border-radius"));
+      newPiece.positionX = parseFloat($(id).css("left"));
+      newPiece.positionY = parseFloat($(id).css("top"));
+      newPiece.width = parseFloat($(id).css("width"));
+      newPiece.height = parseFloat($(id).css("height"));
       newPiece.speedX = 0;
       newPiece.speedY = 0;
 
       return newPiece;
     }
 
-
     function createPiece(id) {
-      $("<div>").attr("id", id)
+      $("<div>")
+        .attr("id", id)
         .addClass("snakePart")
         .appendTo("#board")
         .css("top", head.positionY)
-        .css("left", head.positionX)
+        .css("left", head.positionX);
     }
 
     function addPiece() {
@@ -290,14 +286,22 @@ function startGame() {
     function collision() {
       for (var i = 1; i <= snakeArray.length - 1; i++) {
         // var oops = snakeArray[i];
-        if (head.positionX === snakeArray[i].positionX && head.positionY === snakeArray[i].positionY) {
+        if (
+          head.positionX === snakeArray[i].positionX &&
+          head.positionY === snakeArray[i].positionY
+        ) {
           finish();
         }
       }
     }
 
     function outOfBounds() {
-      if (head.positionX < 0 || head.positionX > 2320 || head.positionY < 0 || head.positionY > 1120) {
+      if (
+        head.positionX < 0 ||
+        head.positionX > 2320 ||
+        head.positionY < 0 ||
+        head.positionY > 1120
+      ) {
         finish();
       }
     }
@@ -308,12 +312,9 @@ function startGame() {
       }
     }
 
-
-
-
     //scoreeeeeeeeeeeeeeeeeee
     var score = 0;
-    var scoreBox = $('#score');
+    var scoreBox = $("#score");
     function scoreKeep() {
       score = score + 1;
       scoreBox.text("score\n" + score);
@@ -326,44 +327,39 @@ function startGame() {
     }
 
     function finish() {
-    $("#death").show();
-            
-    var deathBox = jQuery('#death');
+      $("#death").show();
 
-    deathBox.html("YOU DIED<br>score<br> ~" + score + "~");
+      var deathBox = jQuery("#death");
 
-    endGame();
+      deathBox.html("YOU DIED<br>score<br> ~" + score + "~");
+
+      endGame();
     }
 
-
-    function randomRGB(){
-     return Math.floor(Math.random() * 256);
+    function randomRGB() {
+      return Math.floor(Math.random() * 256);
     }
 
-
-    function eyes(){
+    function eyes() {
       var pupAngle1 = calculatePupilAngle(eye1);
       var pupAngle2 = calculatePupilAngle(eye2);
 
       $(scoreBox).text(pupAngle1 + " " + pupAngle2);
     }
 
-    function calculatePupilAngle(eye){
-      var eyeCenterX = eye.positionX + eye.width/2;
-      var eyeCenterY = eye.positionY + eye.height/2;
-      var appleCenterX = apple.positionX + apple.width/2;
-      var appleCenterY = apple.positionY + apple.height/2;
+    function calculatePupilAngle(eye) {
+      var eyeCenterX = eye.positionX + eye.width / 2;
+      var eyeCenterY = eye.positionY + eye.height / 2;
+      var appleCenterX = apple.positionX + apple.width / 2;
+      var appleCenterY = apple.positionY + apple.height / 2;
 
       var offsetX = eyeCenterX - appleCenterX;
       var offsetY = eyeCenterY - appleCenterY;
 
       var tempAngle = Math.atan2(offsetY, offsetX);
 
-      return (tempAngle * 180 / Math.PI) + parseFloat($(head.id).css("transform"));
+      return (tempAngle * 180) / Math.PI + head.angle;
     }
-    
-
-
 
     function endGame() {
       // stop the interval timer
@@ -372,6 +368,5 @@ function startGame() {
       // turn off event handlers
       // $(document).off();
     }
-
   }
 }
