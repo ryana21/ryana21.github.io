@@ -42,6 +42,8 @@ function startGame() {
       positionY: randomGrid(1120),
       speedX: 0,
       speedY: 0,
+      width: 40,
+      heigh: 40,
     };
 
     var tongue = {
@@ -341,15 +343,14 @@ function startGame() {
     }
 
     function eyes() {
-      var pupAngle1 = calculatePupilAngle(eye1);
-      var pupAngle2 = calculatePupilAngle(eye2);
+      var pupAngle = calculatePupilAngle()
 
-      $(scoreBox).text(pupAngle1 + " " + pupAngle2);
+      $(scoreBox).text(pupAngle);
     }
 
-    function calculatePupilAngle(eye) {
-      var eyeCenterX = eye.positionX + eye.width / 2;
-      var eyeCenterY = eye.positionY + eye.height / 2;
+    function calculatePupilAngle() {
+      var eyeCenterX = head.positionX + head.width / 2;
+      var eyeCenterY = head.positionY + head.height / 2;
       var appleCenterX = apple.positionX + apple.width / 2;
       var appleCenterY = apple.positionY + apple.height / 2;
 
