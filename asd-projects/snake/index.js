@@ -78,6 +78,8 @@ function startGame() {
       positionY: head.positionY + 10,
       speedX: 0,
       speedY: 0,
+      width: 15,
+      height: 15,
       
     };
 
@@ -87,6 +89,8 @@ function startGame() {
       positionY: head.positionY,
       speedX: 0,
       speedY: 0,
+      width: 15,
+      height: 15,
       
     };
 
