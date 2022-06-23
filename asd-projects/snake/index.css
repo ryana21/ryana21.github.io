@@ -5,7 +5,7 @@
   width: 2360px;
   height: 1160px;
   border: 10px solid rgb(17, 206, 11);
-  background-color: black;
+  background-color: rgb(49, 39, 39);
   position: absolute;
 }
 
@@ -23,16 +23,18 @@
 
 #tongue {
   background-color: red;
-  width: 30px;
-  height:15px;
+  width: 15px;
+  height:30px;
   position: absolute;
-  /* top: inherit;
-  left: inherit; */
+  top: -27px;
+  left: 11.5px;
 }
 #eye1 {
   background-color: white;
   width: 15px;
   height:15px;
+  top:15px;
+  left:0px;
   border-radius: 15px;
   position: absolute;
   
@@ -41,6 +43,26 @@
   background-color: white;
   width: 15px;
   height:15px;
+  top:15px;
+  left:25px;
+  border-radius: 15px;
+  position: absolute;
+}
+#eyePupil1 {
+  background-color: black;
+  width: 6px;
+  height:6px;
+  top:0px;
+  left:px;
+  border-radius: 15px;
+  position: absolute;
+}
+#eyePupil2 {
+  background-color: black;
+  width: 6px;
+  height:6px;
+  top:0px;
+  left:0px;
   border-radius: 15px;
   position: absolute;
 }
@@ -59,6 +81,16 @@
   position: absolute;
   left: 400px;
   top: 520px;
+  border-radius: 15px/20px;
+}
+
+#stem {
+  background-color: green;
+  width: 10px;
+  height:15px;
+  position: absolute;
+  top: -10px;
+  left: 15px;
 
 }
 #score {
@@ -67,8 +99,8 @@
   width: 300px;
   height: 1160px;
   position: absolute;
-  left: 2400px;
-  top: 8px;
+  left: 2370px;
+  top: -10px;
   font-family:fantasy;
   font-size: 700%;
 	text-align: center;
@@ -101,3 +133,16 @@
 	text-align: center;
   display: none;
 }
+#secret {
+  border: 10px solid rgb(17, 206, 11);
+  width: 780px;
+  height: 1160px;
+  position: absolute;
+  left: 40000px;
+  top: 8px;
+  font-family:fantasy;
+  font-size: 700%;
+	text-align: center;
+  display: block;
+  background: url(https://ih1.redbubble.net/image.400326643.7163/flat,750x,075,f-pad,750x1000,f8f8f8.u4.jpg);
+  }

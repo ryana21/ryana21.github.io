@@ -50,16 +50,31 @@ function startGame() {
 
     var tongue = {
       id: "#tongue",
-      positionX: head.positionX + 5,
+      positionX: head.positionX + 20,
       positionY: head.positionY + 10,
       speedX: 0,
       speedY: 0,
-      
     };
+
+    var pupil1 = {
+      id: "#pupil1",
+      positionX: head.positionX + 20,
+      positionY: head.positionY + 10,
+      speedX: 0,
+      speedY: 0
+    }
+
+    var pupil2 = {
+      id: "#pupil2",
+      positionX: head.positionX + 20,
+      positionY: head.positionY + 10,
+      speedX: 0,
+      speedY: 0
+    }
 
     var eye1 = {
       id: "#eye1",
-      positionX: head.positionX + 15,
+      positionX: head.positionX,
       positionY: head.positionY + 10,
       speedX: 0,
       speedY: 0,
@@ -68,7 +83,7 @@ function startGame() {
 
     var eye2 = {
       id: "#eye2",
-      positionX: head.positionX + 15,
+      positionX: head.positionX,
       positionY: head.positionY,
       speedX: 0,
       speedY: 0,
@@ -80,6 +95,8 @@ function startGame() {
       positionX: randomGrid(2360),
       positionY: randomGrid(1120),
     };
+
+    
 
     var snakeArray = [
       head,
@@ -108,6 +125,7 @@ function startGame() {
     */
     function newFrame() {
 
+
       if (head.positionX === apple.positionX && head.positionY === apple.positionY) {
         spawnApple(apple);
         addPiece();
@@ -127,6 +145,8 @@ function startGame() {
       collision();
 
       outOfBounds();
+
+      eyes();
 
     }
 
@@ -315,7 +335,26 @@ function startGame() {
     }
 
 
-    
+    function eyes(){
+      var pupAngle1 = calculatePupilAngle(eye1);
+      var pupAngle2 = calculatePupilAngle(eye2);
+
+      $(scoreBox.id).text(pupAngle1 + " " + pupAngle2);
+    }
+
+    function calculatePupilAngle(eye){
+      var eyeCenterX = eye.positionX + eye.width/2;
+      var eyeCenterY = eye.positionY + eye.height/2;
+      var appleCenterX = apple.positionX + apple.width/2;
+      var appleCenterY = apple.positionY + apple.height/2;
+
+      var offsetX = eyeCenterX - appleCenterX;
+      var offsetY = eyeCenterY - appleCenterY;
+
+      var tempAngle = Math.atan2(offsetY, offsetX);
+
+      return (tempAngle * 180 / Math.PI) + parseFloat($(head.id).css("transform"));
+    }
     
 
 
