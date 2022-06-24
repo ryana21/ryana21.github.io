@@ -23,7 +23,7 @@ function startGame() {
     ////////////////////////////////////////////////////////////////////////////////
 
     // Constant Variables
-    var FRAME_RATE = 10;
+    var FRAME_RATE = 4;
     var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
     var KEY = {
       W: 87,
@@ -43,7 +43,7 @@ function startGame() {
       speedX: 0,
       speedY: 0,
       width: 40,
-      heigh: 40,
+      height: 40,
     };
 
     var tongue = {
@@ -345,7 +345,8 @@ function startGame() {
     function eyes() {
       var pupAngle = calculatePupilAngle()
 
-      $(scoreBox).text(pupAngle);
+      $(eye1.id).css("transform", `rotate(${pupAngle}deg)`);
+      $(eye2.id).css("transform", `rotate(${pupAngle}deg)`);
     }
 
     function calculatePupilAngle() {
@@ -354,10 +355,10 @@ function startGame() {
       var appleCenterX = apple.positionX + apple.width / 2;
       var appleCenterY = apple.positionY + apple.height / 2;
 
-      var offsetX = eyeCenterX - appleCenterX;
-      var offsetY = eyeCenterY - appleCenterY;
+      var offsetX = (eyeCenterX - appleCenterX);
+      var offsetY = (eyeCenterY - appleCenterY);
 
-      var tempAngle = Math.atan2(offsetY, offsetX);
+      var tempAngle = Math.atan2(offsetX, offsetY);
 
       return (tempAngle * 180) / Math.PI + head.angle;
     }
